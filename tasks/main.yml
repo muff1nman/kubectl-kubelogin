@@ -1,0 +1,16 @@
+- name: Download kubelogin packages
+  get_url:
+    url: "https://github.com/int128/kubelogin/releases/download/{{ kubelogin_version }}/kubelogin_{{ kubelogin_os }}_{{ kubelogin_arch }}.zip"
+    checksum: "{{ kubelogin_checksum }}"
+    dest: "{{ download_tmp_directory }}/kubelogin-{{ kubelogin_version }}-{{ kubelogin_arch }}-{{ kubelogin_os }}.zip"
+- name: Extract kubelogin related binaries
+  unarchive:
+    src: "{{ download_tmp_directory }}/kubelogin-{{ kubelogin_version }}-{{ kubelogin_arch }}-{{ kubelogin_os }}.zip"
+    dest: /usr/local/bin
+    mode: 0755
+    remote_src: True
+- name: Create symlink for kube plugin
+  file:
+    state: link
+    src: kubelogin
+    dest: /usr/local/bin/kubectl-oidc_login
