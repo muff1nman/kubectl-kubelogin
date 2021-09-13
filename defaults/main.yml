@@ -1,5 +1,5 @@
 download_tmp_directory: "{{ lookup('env', 'TMPDIR') | default('/tmp',true) }}"
-kubelogin_version: 'v1.19.0'
+kubelogin_version: 'v1.25.0'
 kubelogin_os: 'linux'
 kubelogin_arch: 'amd64'
-kubelogin_checksum: "sha256:501ad0e02f6b7575233ae0cfa9b02811eb37dfde41977993e44d3589f8ca12db"
+kubelogin_checksum: "sha256:95aa5af71f46cc8f23af098d7303815de42763aaa6367db50315805669d3c6aa"
